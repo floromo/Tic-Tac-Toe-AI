@@ -27,14 +27,12 @@ def main():
         else:
             opp(canvas, board, yourTurn, turn)
         yourTurn *= -1
+        drawTurn(canvas, yourTurn, turn)
     if winCheck(board, "OOO"):
-        print("You win!")
         canvas.change_text(turn, "You win!")
     elif winCheck(board, "XXX"):
-        print("You lose!")
         canvas.change_text(turn, "You lose!")
     else:
-        print("It's a tie!")
         canvas.change_text(turn, "It's a tie!")
 
 
@@ -126,7 +124,6 @@ def you(canvas, board, yourTurn, tryAgain, turn):
     canvas.set_hidden(tryAgain, True)
     board[row][col] = "O"
     drawO(canvas,rowPosition(click),colPosition(click))
-    drawTurn(canvas, yourTurn, turn)
 
 def checkMove(row, col, board):
     if board[row][col] == "":
@@ -170,7 +167,6 @@ def opp(canvas, board, yourTurn, turn):
             drawX(canvas, 300, 435)
         else:
             drawX(canvas, 435, 435)
-    drawTurn(canvas, yourTurn, turn)
 
 
 def stringToIntArr(str):                        # turns chatgpt's response into an int array
